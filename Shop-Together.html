@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team up with other shoppers to unlock exclusive brand promotions. Buy together and share deals like buy 2 get 2 free offers.">
+    <title>ShopTogether | Collaborative Shopping Deals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --yellow: #FFD700;
+            --yellow-light: #FFF9C4;
+            --yellow-dark: #FFC600;
+            --gray-dark: #212121;
+            --gray-medium: #424242;
+            --gray-light: #EEEEEE;
+            --white: #FFFFFF;
+            --accent: #FF5252;
+            --success: #4CAF50;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--black);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            background: var(--yellow);
+            color: var(--black);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--yellow);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--white), transparent);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--black);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--yellow);
+            border-radius: 3px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 3rem;
+            border: 2px solid var(--yellow);
+        }
+
+        .filter-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-title i {
+            color: var(--yellow);
+            font-size: 1.5rem;
+            background: var(--black);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-title h3 {
+            font-size: 1.5rem;
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            background: var(--white);
+            transition: var(--transition);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--yellow);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Deals Grid */
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        /* Deal Card */
+        .deal-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 2px solid var(--gray-light);
+        }
+
+        .deal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--yellow);
+        }
+
+        .deal-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .deal-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .deal-card:hover .deal-image img {
+            transform: scale(1.05);
+        }
+
+        .deal-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .deal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .brand-logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--yellow-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.25rem;
+            font-size: 1.5rem;
+            color: var(--black);
+            flex-shrink: 0;
+            border: 2px solid var(--yellow);
+        }
+
+        .deal-info h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.35rem;
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .deal-info p {
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .deal-details {
+            margin-bottom: 1.75rem;
+        }
+
+        .deal-details p {
+            margin-bottom: 0.85rem;
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+        }
+
+        .deal-highlight {
+            font-weight: 700;
+            color: var(--black);
+            background: var(--yellow-light);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .deal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .deal-tag {
+            background: var(--yellow-light);
+            color: var(--black);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--yellow);
+        }
+
+        /* Partner Section */
+        .partner-section {
+            background: var(--yellow-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: auto;
+            border: 1px solid var(--yellow);
+        }
+
+        .partner-section h4 {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            color: var(--black);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .partner-section h4 i {
+            color: var(--black);
+        }
+
+        .partner-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--gray-medium);
+            flex-shrink: 0;
+            border: 2px solid var(--yellow);
+        }
+
+        .partner-avatar.available {
+            background: var(--white);
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        .partner-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        .partner-info .status {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .partner-info .status.available {
+            color: var(--success);
+        }
+
+        .partner-info .status.pending {
+            color: var(--accent);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--white);
+            border-radius: 4px;
+            margin: 0.75rem 0;
+            overflow: hidden;
+            border: 1px solid var(--yellow);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--yellow), var(--yellow-dark));
+            border-radius: 4px;
+            width: 50%;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.75rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            gap: 0.75rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--black);
+            border: 2px solid var(--yellow);
+        }
+
+        .btn-primary:hover {
+            background: var(--yellow-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--black);
+            color: var(--yellow);
+            border: 2px solid var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #ff3d3d;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 82, 82, 0.3);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--black);
+            padding: 5rem 2rem;
+            margin: 5rem 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23FFD700" fill-opacity="0.03" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .stats-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--yellow);
+            margin-bottom: 1rem;
+        }
+
+        .stats-title p {
+            color: var(--gray-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--yellow);
+            color: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--yellow);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-light);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            margin: 6rem 0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .step {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            border-color: var(--yellow);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            color: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            border: 2px solid var(--yellow);
+        }
+
+        .step h3 {
+            margin-bottom: 1.25rem;
+            color: var(--black);
+            font-weight: 700;
+            font-size: 1.35rem;
+        }
+
+        .step p {
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 6rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            border: 2px solid var(--gray-light);
+            transition: var(--transition);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            border-color: var(--yellow);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 5rem;
+            color: rgba(255, 215, 0, 0.1);
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            color: var(--gray-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1.25rem;
+            border: 2px solid var(--yellow);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .author-info p {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        .author-rating {
+            color: var(--yellow);
+            margin-top: 0.25rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: var(--black);
+            padding: 4rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--yellow);
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23FFD700" fill-opacity="0.05" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.25rem;
+            color: var(--yellow);
+            font-weight: 800;
+        }
+
+        .newsletter p {
+            color: var(--gray-light);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.9rem 1.25rem;
+            border: 2px solid var(--gray-dark);
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: var(--gray-dark);
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--gray-light);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--yellow);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+            background: var(--gray-medium);
+        }
+
+        .newsletter-form button {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+            border-top: 2px solid var(--yellow);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--yellow);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-logo-icon {
+            background: var(--yellow);
+            color: var(--black);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .footer-about p {
+            color: var(--gray-light);
+            margin-bottom: 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--yellow);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1.75rem;
+            color: var(--yellow);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--yellow);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--yellow);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--yellow);
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--gray-light);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-contact i {
+            color: var(--yellow);
+            margin-top: 4px;
+            font-size: 1rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        .copyright a {
+            color: var(--yellow);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 5rem 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            
+            .stats-title h2 {
+                font-size: 2.25rem;
+            }
+            
+            .newsletter h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .filter-options {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: var(--border-radius);
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-form button {
+                border-radius: var(--border-radius);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                ShopTogether
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#deals">Deals</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-secondary">Sign In</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Shop <span>Together</span>, Save <span>Together</span></h1>
+            <p>Unlock exclusive promotions like "Buy 2 Get 2 Free" by teaming up with other shoppers. More people, bigger discounts!</p>
+            <div class="hero-buttons">
+                <a href="#deals" class="btn btn-primary">
+                    <i class="fas fa-bolt"></i> Explore Deals
+                </a>
+                <a href="#how-it-works" class="btn btn-secondary">
+                    <i class="fas fa-play"></i> How It Works
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-title fade-in">
+                <h2>Our Community Impact</h2>
+                <p>Join thousands of smart shoppers who are saving money together every day</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-label">Active Shoppers</div>
+                </div>
+                <div class="stat-item fade-in delay-1">
+                    <div class="stat-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="stat-number">750+</div>
+                    <div class="stat-label">Brand Partners</div>
+                </div>
+                <div class="stat-item fade-in delay-2">
+                    <div class="stat-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="stat-number">$2M+</div>
+                    <div class="stat-label">Total Savings</div>
+                </div>
+                <div class="stat-item fade-in delay-3">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number">4.9★</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Deals Section -->
+        <section id="deals">
+            <div class="section-title fade-in">
+                <h2>Current Collaborative Deals</h2>
+            </div>
+
+            <div class="filter-section fade-in delay-1">
+                <div class="filter-title">
+                    <i class="fas fa-filter"></i>
+                    <h3>Find Your Perfect Deal</h3>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="all">All Categories</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="home">Home Goods</option>
+                            <option value="beauty">Beauty</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="deal-type">Deal Type</label>
+                        <select id="deal-type">
+                            <option value="all">All Deal Types</option>
+                            <option value="bogo">Buy One Get One</option>
+                            <option value="b2g2">Buy 2 Get 2</option>
+                            <option value="group">Group Discounts</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort">Sort By</label>
+                        <select id="sort">
+                            <option value="newest">Newest First</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="ending">Ending Soon</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deals-grid">
+                <!-- Deal 1 -->
+                <div class="deal-card fade-in">
+                    <div class="deal-badge">HOT DEAL</div>
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="UrbanWear T-Shirts">
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-header">
+                            <div class="brand-logo">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="deal-info">
+                                <h3>UrbanWear</h3>
+                                <p>Buy 2 Get 2 Free on T-Shirts</p>
+                            </div>
+                        </div>
+                        <div class="deal-details">
+                            <p>Team up with another shopper to unlock this exclusive promotion:</p>
+                            <p><span class="deal-highlight">Buy 2 T-Shirts together and get 2 free!</span> (Each pays for 1, gets 2)</p>
+                        </div>
+                        <div class="deal-tags">
+                            <span class="deal-tag">Fashion</span>
+                            <span class="deal-tag">Clothing</span>
+                            <span class="deal-tag">50% Off</span>
+                        </div>
+                        <div class="partner-section">
+                            <h4><i class="fas fa-user-friends"></i> Find a Shopping Partner</h4>
+                            <div class="partner-status">
+                                <div class="partner-avatar available">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <p>Available Partner</p>
+                                    <p class="status available">Ready to team up</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-block">
+                                    <i class="fas fa-search"></i> Find Partner
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 2 -->
+                <div class="deal-card fade-in delay-1">
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="TechGadgets Headphones">
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-header">
+                            <div class="brand-logo">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="deal-info">
+                                <h3>TechGadgets</h3>
+                                <p>Buy 1 Get 1 50% Off</p>
+                            </div>
+                        </div>
+                        <div class="deal-details">
+                            <p>Pair up to get premium headphones at a fraction of the price:</p>
+                            <p><span class="deal-highlight">Buy 1 at full price, get 1 at 50% off!</span> (Save 25% each)</p>
+                        </div>
+                        <div class="deal-tags">
+                            <span class="deal-tag">Electronics</span>
+                            <span class="deal-tag">Audio</span>
+                            <span class="deal-tag">25% Off</span>
+                        </div>
+                        <div class="partner-section">
+                            <h4><i class="fas fa-user-friends"></i> Find a Shopping Partner</h4>
+                            <div class="partner-status">
+                                <div class="partner-avatar">
+                                    <i class="fas fa-user-clock"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <p>Searching for partner</p>
+                                    <p class="status pending">3 people interested</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-block">
+                                    <i class="fas fa-user-plus"></i> Join Deal
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 3 -->
+                <div class="deal-card fade-in delay-2">
+                    <div class="deal-badge">NEW</div>
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="HomeEssentials Kitchen">
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-header">
+                            <div class="brand-logo">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="deal-info">
+                                <h3>HomeEssentials</h3>
+                                <p>Group Buy: 30% Off</p>
+                            </div>
+                        </div>
+                        <div class="deal-details">
+                            <p>Gather 4 shoppers to unlock this exclusive discount:</p>
+                            <p><span class="deal-highlight">30% off premium kitchen sets</span> when 4 people commit</p>
+                        </div>
+                        <div class="deal-tags">
+                            <span class="deal-tag">Home</span>
+                            <span class="deal-tag">Kitchen</span>
+                            <span class="deal-tag">30% Off</span>
+                        </div>
+                        <div class="partner-section">
+                            <h4><i class="fas fa-users"></i> Group Status</h4>
+                            <div class="partner-status">
+                                <div class="partner-avatar available">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <p>2 of 4 spots filled</p>
+                                    <p class="status pending">2 more needed</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-accent btn-block">
+                                    <i class="fas fa-user-plus"></i> Join Group
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="section-title fade-in">
+                <h2>How It Works</h2>
+            </div>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Find a Deal</h3>
+                    <p>Browse our selection of exclusive collaborative shopping deals from top brands.</p>
+                </div>
+                <div class="step fade-in delay-1">
+                    <div class="step-number">2</div>
+                    <h3>Team Up</h3>
+                    <p>Connect with other shoppers interested in the same deal through our platform.</p>
+                </div>
+                <div class="step fade-in delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Shop Together</h3>
+                    <p>Combine your orders to unlock the promotion and enjoy shared savings.</p>
+                </div>
+                <div class="step fade-in delay-3">
+                    <div class="step-number">4</div>
+                    <h3>Save More</h3>
+                    <p>Receive your items and enjoy premium products at fraction of the price!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="testimonials">
+            <div class="section-title fade-in">
+                <h2>What Our Users Say</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        <p>I saved over $200 on my last shopping spree by teaming up with others through ShopTogether. The process was seamless and the savings were incredible!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Frequent Shopper</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in delay-1">
+                    <div class="testimonial-content">
+                        <p>As a college student on a budget, ShopTogether has been a game-changer. I get premium brands at prices I can actually afford by shopping with others.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Student</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in delay-2">
+                    <div class="testimonial-content">
+                        <p>The group buy feature helped me furnish my entire apartment with high-quality items at 30% off. Found reliable shopping partners quickly and easily.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jessica Martinez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Jessica Martinez</h4>
+                            <p>New Homeowner</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter fade-in">
+            <div class="newsletter-content">
+                <h2>Get Exclusive Deal Alerts</h2>
+                <p>Subscribe to our newsletter and be the first to know about new collaborative shopping opportunities.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    ShopTogether
+                </a>
+                <p>Team up with other shoppers to unlock exclusive promotions and save money together on your favorite brands.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#deals"><i class="fas fa-chevron-right"></i> Current Deals</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Fashion</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Electronics</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home Goods</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Beauty</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Books</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Shopping Ave, New York, NY 10001</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@shoptogether.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 ShopTogether. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const categoryFilter = document.getElementById('category');
+            const dealTypeFilter = document.getElementById('deal-type');
+            const sortFilter = document.getElementById('sort');
+            const dealCards = document.querySelectorAll('.deals-grid .deal-card');
+            
+            function applyFilters() {
+                const category = categoryFilter.value;
+                const dealType = dealTypeFilter.value;
+                
+                dealCards.forEach(card => {
+                    let showCard = true;
+                    
+                    // Filter by category
+                    if (category !== 'all') {
+                        const tags = card.querySelectorAll('.deal-tag');
+                        let hasCategory = false;
+                        tags.forEach(tag => {
+                            if (tag.textContent.toLowerCase().includes(category)) {
+                                hasCategory = true;
+                            }
+                        });
+                        showCard = showCard && hasCategory;
+                    }
+                    
+                    // Filter by deal type
+                    if (dealType !== 'all') {
+                        const dealTitle = card.querySelector('.deal-info p').textContent;
+                        let matchesType = false;
+                        
+                        if (dealType === 'bogo' && dealTitle.includes('Buy 1 Get 1')) {
+                            matchesType = true;
+                        } else if (dealType === 'b2g2' && dealTitle.includes('Buy 2 Get 2')) {
+                            matchesType = true;
+                        } else if (dealType === 'group' && (dealTitle.includes('Group') || dealTitle.includes('Buy 3'))) {
+                            matchesType = true;
+                        }
+                        
+                        showCard = showCard && matchesType;
+                    }
+                    
+                    card.style.display = showCard ? 'flex' : 'none';
+                });
+            }
+            
+            categoryFilter.addEventListener('change', applyFilters);
+            dealTypeFilter.addEventListener('change', applyFilters);
+            
+            // Sort functionality
+            sortFilter.addEventListener('change', function() {
+                alert('Sorting would be implemented with real data in a production app');
+            });
+            
+            // Join deal buttons
+            const joinButtons = document.querySelectorAll('.action-buttons .btn');
+            
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const dealTitle = this.closest('.deal-card').querySelector('.deal-info h3').textContent;
+                    alert(`You've joined the deal for ${dealTitle}. This would connect to a matching service in a real application.`);
+                });
+            });
+            
+            // Animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkScroll() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            window.addEventListener('load', checkScroll);
+            
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input').value;
+                    alert(`Thanks for subscribing with ${email}! You'll receive our best deals.`);
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
