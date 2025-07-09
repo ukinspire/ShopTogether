@@ -1,72 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopTogether | Group Shopping Revolution</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Theme */
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --accent: #4f46e5;
-            --accent-hover: #4338ca;
-            --glass: rgba(255, 255, 255, 0.8);
-            --shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            
-            /* Dark Theme */
-            [data-theme="dark"] {
-                --bg-primary: #0f172a;
-                --bg-secondary: #1e293b;
-                --text-primary: #f8fafc;
-                --text-secondary: #94a3b8;
-                --glass: rgba(15, 23, 42, 0.8);
-                --shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            }
+            --black: #000000;
+            --yellow: #FFD700;
+            --dark-gray: #1A1A1A;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
-        /* Navigation */
-        nav {
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--black);
+            padding: 20px 0;
             position: fixed;
             width: 100%;
-            padding: 1.5rem 0;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            background-color: var(--glass);
-            box-shadow: var(--shadow);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-container {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -75,30 +55,45 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.25rem;
             text-decoration: none;
-            color: var(--text-primary);
         }
 
-        .logo-img {
-            width: 2rem;
-            height: 2rem;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--black);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
             list-style: none;
         }
 
+        .nav-links li {
+            margin-left: 30px;
+        }
+
         .nav-links a {
+            color: var(--white);
             text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
+            font-weight: 600;
             position: relative;
-            padding: 0.5rem 0;
+            padding-bottom: 5px;
         }
 
         .nav-links a::after {
@@ -108,261 +103,254 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+            background-color: var(--yellow);
+            transition: width 0.3s;
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 1.25rem;
-        }
-
         .cta-button {
-            background-color: var(--accent);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+            background-color: var(--yellow);
+            color: var(--black);
+            padding: 12px 24px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid var(--yellow);
         }
 
         .cta-button:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            background-color: transparent;
+            color: var(--yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(255, 215, 0, 0.3);
         }
 
-        /* Hero Section */
+        /* ===== HERO SECTION ===== */
         .hero {
-            padding: 10rem 0 5rem;
-            position: relative;
-            overflow: hidden;
+            padding: 180px 0 100px;
+            background: linear-gradient(to right, var(--white) 50%, var(--light-gray) 50%);
         }
 
         .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             align-items: center;
-            gap: 3rem;
         }
 
         .hero-content {
-            max-width: 32rem;
+            flex: 1;
+            padding-right: 50px;
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 20px;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--accent), #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--black);
+        }
+
+        .hero-title span {
+            color: var(--yellow);
+            text-shadow: 2px 2px 0 var(--black);
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.7;
+            font-size: 18px;
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+            max-width: 500px;
         }
 
         .app-mockup {
+            flex: 1;
             position: relative;
-            perspective: 1000px;
+            text-align: center;
         }
 
-        .mockup-container {
-            position: relative;
-            transform-style: preserve-3d;
+        .phone-mockup {
+            max-width: 300px;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
             animation: float 6s ease-in-out infinite;
-        }
-
-        .mockup-img {
-            width: 100%;
-            max-width: 28rem;
-            transform: rotateY(-15deg) rotateX(5deg);
-            filter: drop-shadow(0 25px 25px rgba(79, 70, 229, 0.3));
-            transition: transform 0.5s ease;
-        }
-
-        .mockup-container:hover .mockup-img {
-            transform: rotateY(-5deg) rotateX(2deg);
         }
 
         .download-buttons {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 15px;
+            margin-top: 30px;
         }
 
         .download-btn {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: 0.5rem;
+            padding: 12px 20px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .app-store {
-            background-color: #000;
-            color: white;
+            background-color: var(--black);
+            color: var(--white);
         }
 
         .play-store {
-            background-color: #4285F4;
-            color: white;
+            background-color: var(--black);
+            color: var(--yellow);
+            border: 2px solid var(--yellow);
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .download-btn i {
+            font-size: 24px;
+            margin-right: 10px;
         }
 
-        /* Features Section */
+        .download-btn .btn-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .download-btn .small-text {
+            font-size: 10px;
+        }
+
+        .download-btn .large-text {
+            font-size: 16px;
+        }
+
+        /* ===== FEATURES SECTION ===== */
         .features {
-            padding: 6rem 0;
-            background-color: var(--bg-secondary);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+            padding: 100px 0;
+            background-color: var(--dark-gray);
         }
 
         .section-title {
-            font-size: 2.5rem;
+            text-align: center;
+            color: var(--yellow);
+            font-size: 36px;
+            margin-bottom: 15px;
             font-weight: 700;
-            margin-bottom: 1rem;
         }
 
         .section-subtitle {
-            color: var(--text-secondary);
-            max-width: 42rem;
-            margin: 0 auto;
+            text-align: center;
+            color: var(--white);
+            max-width: 600px;
+            margin: 0 auto 50px;
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
 
         .feature-card {
-            background-color: var(--bg-primary);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--black);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
+            border-color: var(--yellow);
         }
 
         .feature-icon {
-            width: 3rem;
-            height: 3rem;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--accent), #7c3aed);
-            color: white;
-            border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.25rem;
+            margin: 0 auto 20px;
+            color: var(--yellow);
+            font-size: 28px;
         }
 
         .feature-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            color: var(--white);
+            font-size: 22px;
+            margin-bottom: 15px;
         }
 
-        .feature-desc {
-            color: var(--text-secondary);
+        .feature-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
         }
 
-        /* Testimonials */
+        /* ===== TESTIMONIALS ===== */
         .testimonials {
-            padding: 6rem 0;
+            padding: 100px 0;
+            background-color: var(--light-gray);
         }
 
         .testimonial-card {
-            background-color: var(--bg-primary);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             position: relative;
-            overflow: hidden;
+            border-left: 4px solid var(--yellow);
         }
 
-        .testimonial-card::before {
+        .testimonial-text {
+            color: var(--dark-gray);
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .testimonial-text::before {
             content: """;
             position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-size: 5rem;
-            color: var(--accent);
-            opacity: 0.1;
+            left: 0;
+            top: -10px;
+            font-size: 50px;
+            color: rgba(255, 215, 0, 0.2);
             font-family: serif;
             line-height: 1;
-        }
-
-        .testimonial-content {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 1.5rem;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
         }
 
         .author-avatar {
-            width: 3rem;
-            height: 3rem;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--yellow);
         }
 
         .author-info h4 {
-            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 5px;
         }
 
         .author-info p {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
+            color: var(--dark-gray);
+            font-size: 14px;
         }
 
-        /* CTA Section */
+        /* ===== CTA SECTION ===== */
         .cta {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, var(--accent), #7c3aed);
-            color: white;
+            padding: 100px 0;
+            background-color: var(--black);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -371,12 +359,12 @@
         .cta::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            animation: rotate 20s linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(0,0,0,0) 70%);
+            opacity: 0.5;
         }
 
         .cta-container {
@@ -385,50 +373,95 @@
         }
 
         .cta-title {
-            font-size: 2.5rem;
+            color: var(--yellow);
+            font-size: 42px;
+            margin-bottom: 20px;
             font-weight: 700;
-            margin-bottom: 1.5rem;
         }
 
         .cta-subtitle {
-            max-width: 42rem;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
+            color: var(--white);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 18px;
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer {
-            background-color: var(--bg-secondary);
-            padding: 4rem 0 2rem;
+            background-color: var(--black);
+            padding: 60px 0 30px;
+            color: var(--white);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 40px;
+            margin-bottom: 50px;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             text-decoration: none;
-            color: var(--text-primary);
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--black);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .footer-logo-text {
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 24px;
         }
 
         .footer-about {
-            max-width: 20rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--yellow);
+            color: var(--black);
+            transform: translateY(-3px);
         }
 
         .footer-links h3 {
-            font-size: 1.125rem;
+            color: var(--yellow);
+            margin-bottom: 20px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 1.5rem;
         }
 
         .footer-links ul {
@@ -436,52 +469,28 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            color: var(--text-secondary);
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            width: 2.5rem;
-            height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background-color: var(--accent);
-            color: white;
-            transform: translateY(-3px);
+            color: var(--yellow);
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
+            padding-top: 30px;
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
 
-        /* Animations */
+        /* ===== ANIMATIONS ===== */
         @keyframes float {
             0%, 100% {
                 transform: translateY(0);
@@ -491,34 +500,25 @@
             }
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Responsive Design */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1024px) {
+            .hero {
+                background: var(--white);
+                padding: 150px 0 80px;
+            }
+            
             .hero-container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 text-align: center;
             }
-
+            
             .hero-content {
-                max-width: 100%;
-                margin-bottom: 3rem;
+                padding-right: 0;
+                margin-bottom: 50px;
             }
-
+            
             .download-buttons {
                 justify-content: center;
-            }
-
-            .app-mockup {
-                margin: 0 auto;
-                max-width: 80%;
             }
         }
 
@@ -526,50 +526,43 @@
             .nav-links {
                 display: none;
             }
-
+            
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 42px;
             }
-
-            .hero-subtitle {
-                font-size: 1.125rem;
-            }
-
+            
             .section-title {
-                font-size: 2rem;
+                font-size: 32px;
             }
-
-            .download-buttons {
-                flex-direction: column;
+            
+            .cta-title {
+                font-size: 36px;
             }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1.5rem;
+        @media (max-width: 576px) {
+            .download-buttons {
+                flex-direction: column;
+                gap: 15px;
             }
-
-            .hero {
-                padding: 7rem 0 3rem;
-            }
-
+            
             .hero-title {
-                font-size: 2rem;
+                font-size: 36px;
             }
-
+            
             .feature-card {
-                padding: 1.5rem;
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-container">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
             <a href="#" class="logo">
-                <img src="https://via.placeholder.com/40x40" alt="ShopTogether" class="logo-img">
-                <span>ShopTogether</span>
+                <div class="logo-icon">ST</div>
+                <div class="logo-text">ShopTogether</div>
             </a>
             
             <ul class="nav-links">
@@ -579,45 +572,40 @@
                 <li><a href="#pricing">Pricing</a></li>
             </ul>
             
-            <div class="nav-actions">
-                <button class="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="#download" class="cta-button">
-                    Get the App
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+            <a href="#download" class="cta-button">Get the App</a>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Shop Together,<br>Pay Together</h1>
+                <h1 class="hero-title">Shop Together, <span>Save Together</span></h1>
                 <p class="hero-subtitle">
-                    The revolutionary app that makes group shopping effortless. 
-                    Create shared carts, split bills automatically, and enjoy 
-                    shopping with friends like never before.
+                    The revolutionary app that makes group shopping effortless. Create shared carts, 
+                    split bills automatically, and enjoy shopping with friends like never before.
                 </p>
                 
                 <div class="download-buttons">
                     <a href="#" class="download-btn app-store">
                         <i class="fab fa-apple"></i>
-                        <span>App Store</span>
+                        <div class="btn-text">
+                            <span class="small-text">Download on the</span>
+                            <span class="large-text">App Store</span>
+                        </div>
                     </a>
                     <a href="#" class="download-btn play-store">
                         <i class="fab fa-google-play"></i>
-                        <span>Google Play</span>
+                        <div class="btn-text">
+                            <span class="small-text">Get it on</span>
+                            <span class="large-text">Google Play</span>
+                        </div>
                     </a>
                 </div>
             </div>
             
             <div class="app-mockup">
-                <div class="mockup-container">
-                    <img src="https://via.placeholder.com/500x1000" alt="ShopTogether App" class="mockup-img">
-                </div>
+                <img src="https://via.placeholder.com/300x600" alt="ShopTogether App" class="phone-mockup">
             </div>
         </div>
     </section>
@@ -625,13 +613,10 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Amazing Features</h2>
-                <p class="section-subtitle">
-                    ShopTogether comes packed with powerful features designed to make 
-                    group shopping a breeze
-                </p>
-            </div>
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">
+                Everything you need for seamless group shopping experiences
+            </p>
             
             <div class="features-grid">
                 <div class="feature-card">
@@ -639,9 +624,9 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="feature-title">Group Shopping</h3>
-                    <p class="feature-desc">
-                        Invite friends to collaborate on shopping lists in real-time. 
-                        Everyone can add, remove, or edit items simultaneously.
+                    <p class="feature-description">
+                        Create shared carts with friends and family. Everyone can add, remove, 
+                        or edit items in real-time.
                     </p>
                 </div>
                 
@@ -649,10 +634,10 @@
                     <div class="feature-icon">
                         <i class="fas fa-calculator"></i>
                     </div>
-                    <h3 class="feature-title">Smart Splitting</h3>
-                    <p class="feature-desc">
-                        Our algorithm automatically splits the bill based on who bought 
-                        what, with options for equal or custom splits.
+                    <h3 class="feature-title">Smart Bill Splitting</h3>
+                    <p class="feature-description">
+                        Our algorithm automatically splits the bill based on who bought what, 
+                        with options for equal or custom splits.
                     </p>
                 </div>
                 
@@ -661,9 +646,9 @@
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3 class="feature-title">Instant Sync</h3>
-                    <p class="feature-desc">
-                        Changes update instantly across all devices, so everyone stays 
-                        on the same page no matter where they are.
+                    <p class="feature-description">
+                        Changes update instantly across all devices, so everyone stays on 
+                        the same page no matter where they are.
                     </p>
                 </div>
             </div>
@@ -673,57 +658,49 @@
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What Our Users Say</h2>
-                <p class="section-subtitle">
-                    Don't just take our word for it - hear from our happy community
-                </p>
-            </div>
+            <h2 class="section-title">What People Say</h2>
+            <p class="section-subtitle">
+                Don't just take our word for it - hear from our happy users
+            </p>
             
             <div class="features-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>
-                            "ShopTogether has completely changed how my roommates and I 
-                            grocery shop. No more arguments about who owes what!"
-                        </p>
-                    </div>
+                    <p class="testimonial-text">
+                        "ShopTogether has completely changed how my roommates and I grocery shop. 
+                        No more arguments about who owes what!"
+                    </p>
                     <div class="testimonial-author">
                         <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="author-avatar">
                         <div class="author-info">
-                            <h4>Sarah J.</h4>
+                            <h4>Sarah Johnson</h4>
                             <p>Verified User</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>
-                            "As someone who organizes group trips, this app is a lifesaver. 
-                            Splitting costs for vacation supplies has never been easier."
-                        </p>
-                    </div>
+                    <p class="testimonial-text">
+                        "As someone who organizes group trips, this app is a lifesaver. 
+                        Splitting costs for vacation supplies has never been easier."
+                    </p>
                     <div class="testimonial-author">
                         <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="author-avatar">
                         <div class="author-info">
-                            <h4>Michael T.</h4>
+                            <h4>Michael Thompson</h4>
                             <p>Travel Enthusiast</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>
-                            "I use ShopTogether weekly with my family. The interface is 
-                            so intuitive that even my tech-challenged parents can use it!"
-                        </p>
-                    </div>
+                    <p class="testimonial-text">
+                        "I use ShopTogether weekly with my family. The interface is so intuitive 
+                        that even my tech-challenged parents can use it!"
+                    </p>
                     <div class="testimonial-author">
                         <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="author-avatar">
                         <div class="author-info">
-                            <h4>Priya K.</h4>
+                            <h4>Priya Kapoor</h4>
                             <p>Family User</p>
                         </div>
                     </div>
@@ -735,7 +712,7 @@
     <!-- CTA Section -->
     <section class="cta" id="download">
         <div class="container cta-container">
-            <h2 class="cta-title">Ready to Transform Your Group Shopping?</h2>
+            <h2 class="cta-title">Ready to Transform Your Shopping?</h2>
             <p class="cta-subtitle">
                 Join thousands of happy users who are already enjoying stress-free 
                 group shopping and bill splitting.
@@ -743,11 +720,17 @@
             <div class="download-buttons">
                 <a href="#" class="download-btn app-store">
                     <i class="fab fa-apple"></i>
-                    <span>Download on the App Store</span>
+                    <div class="btn-text">
+                        <span class="small-text">Download on the</span>
+                        <span class="large-text">App Store</span>
+                    </div>
                 </a>
                 <a href="#" class="download-btn play-store">
                     <i class="fab fa-google-play"></i>
-                    <span>Get it on Google Play</span>
+                    <div class="btn-text">
+                        <span class="small-text">Get it on</span>
+                        <span class="large-text">Google Play</span>
+                    </div>
                 </a>
             </div>
         </div>
@@ -759,26 +742,18 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <a href="#" class="footer-logo">
-                        <img src="https://via.placeholder.com/40x40" alt="ShopTogether" class="logo-img">
-                        <span>ShopTogether</span>
+                        <div class="footer-logo-icon">ST</div>
+                        <div class="footer-logo-text">ShopTogether</div>
                     </a>
                     <p class="footer-about">
                         Making group shopping effortless since 2023. Our mission is to 
                         eliminate the headaches of shared expenses.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -820,54 +795,43 @@
     </footer>
 
     <script>
-        // Theme Toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.setAttribute(
-                'data-theme',
-                document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-            );
-            
-            themeIcon.classList.toggle('fa-moon');
-            themeIcon.classList.toggle('fa-sun');
-        });
-
-        // Mobile Menu Toggle (would be added when implementing mobile menu)
-        // const mobileMenuButton = document.querySelector('.mobile-menu-button');
-        // const mobileMenu = document.querySelector('.mobile-menu');
-        
-        // mobileMenuButton.addEventListener('click', () => {
-        //     mobileMenu.classList.toggle('hidden');
-        // });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Simple JavaScript for mobile menu (would be expanded in production)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
+            
+            // Animation on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.feature-card, .testimonial-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initialize elements with hidden state
+            document.querySelectorAll('.feature-card, .testimonial-card').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
-            observer.observe(card);
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
         });
     </script>
 </body>
